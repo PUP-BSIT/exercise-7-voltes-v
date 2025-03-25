@@ -64,58 +64,28 @@ def display_receipt(order_items, customer_name, subtotal, discount, grand_total)
 
 #TODO (JC): Main function to manage the order system
 def main():
-    order_items = []
-    customer_name = ""
-    senior_id = ""
-
-    while True:
-        print("\n=== ORDER MANAGEMENT SYSTEM ===")
-        print("1. Collect Order Details")
-        print("2. Get Customer Details")
-        print("3. Calculate Grand Total")
-        print("4. Display Receipt")
-        print("5. Exit")
-        
-        choice = input("Enter your choice: ")
-        
-        if choice == "1":
-            order_items = get_order_details()
-        
-        elif choice == "2":
-            customer_name, senior_id = get_customer_details()
-        
-        elif choice == "3":
-            if not order_items:
-                print("No orders available. Please collect order details first.")
-            else:
-                for item in order_items:
-                    item['total'] = item['price'] * item['quantity']
-                subtotal, discount = calculate_total(order_items, senior_id)
-                print(
-                    f"Subtotal: {subtotal:.2f}\n"
-                    f"Discount: {discount:.2f}\n"
-                    f"Grand Total: {subtotal - discount:.2f}"
-                )
-        
-        elif choice == "4":
-            if not order_items or not customer_name:
-                print("Please complete order and customer details first.")
-            else:
-                subtotal, discount = calculate_total(order_items, senior_id)
-                display_receipt(
-                    order_items,
-                    {"name": customer_name, "senior_id": senior_id},
-                    subtotal,
-                    discount,
-                    subtotal - discount,
-                )
-        
-        elif choice == "5":
-            print("Exiting program. Goodbye!")
-            break
-        
-        else:
-            print("Invalid choice. Please try again.")
+      # Step 1: Collect order details
+    order_items = get_order_details()
+    
+    # Step 2: Get customer details
+    customer_name, senior_id = get_customer_details()
+    
+    # Step 3: Calculate grand total
+    for item in order_items:
+        item['total'] = item['price'] * item['quantity']
+    subtotal, discount = calculate_total(order_items, senior_id)
+    
+    # Step 4: Display receipt
+    display_receipt(
+        order_items,
+        {"name": customer_name, "senior_id": senior_id},
+        subtotal,
+        discount,
+        subtotal - discount,
+    )
+    
+    print("\nTransaction completed. Thank you for shopping!")
 
 if __name__ == "__main__":
     main()
+
