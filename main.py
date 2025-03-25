@@ -1,4 +1,4 @@
-#TODO (Althea): (Order Details Collection)
+#TODO (Althea): Order Details Collection
 def get_price(prompt):
     while True:
         try:
@@ -33,11 +33,15 @@ def get_customer_details():
     senior_id = input("Enter senior ID (leave blank if not senior): ")
     return customer_name, senior_id
 
-#TODO (Name): (Description)
-def calculate_total():
-    pass
+#TODO (Dyanna): Function to calculate grand total with possible senior discount
+def calculate_total(orders, senior_id):
+    grand_total = sum(item['total'] for item in orders)
+    discount = 0
+    if senior_id:
+        discount = grand_total * 0.10
+    return grand_total - discount, discount 
 
-#TODO (Daphne): (Implement receipt display)
+#TODO (Daphne): Implement receipt display
 def display_receipt(order_items, customer, subtotal, discount, grand_total):
 
     print("\n=== ORDER DETAILS ===")
