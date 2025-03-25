@@ -42,7 +42,7 @@ def calculate_total(orders, senior_id):
     return grand_total - discount, discount 
 
 #TODO (Daphne): Implement receipt display
-def display_receipt(order_items, customer, subtotal, discount, grand_total):
+def display_receipt(order_items, customer_name, subtotal, discount, grand_total):
 
     print("\n=== ORDER DETAILS ===")
     print("Product\t\tPrice\tQty\tTotal")
@@ -51,9 +51,9 @@ def display_receipt(order_items, customer, subtotal, discount, grand_total):
         print(f"{item['product_name']}\t\t{item['price']:.2f}\t{item['quantity']}\t{total:.2f}")
 
     print("\n=== CUSTOMER INFORMATION ===")
-    print(f"Customer Name: {customer['name']}")
-    if customer['senior_id'].strip():
-        print(f"Senior ID No.: {customer['senior_id']}")
+    print(f"Customer Name: {customer_name['name']}")
+    if customer_name['senior_id'].strip():
+        print(f"Senior ID No.: {customer_name['senior_id']}")
         print("(10% Senior Citizen Discount Applied)")
 
     print("\n=== PAYMENT SUMMARY ===")
