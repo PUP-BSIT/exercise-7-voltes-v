@@ -28,7 +28,7 @@ def get_order_details():
     return order_items
 
 #TODO (Precious): Function to get customer details
-def get_customer_detsils():
+def get_customer_details():
     customer_name = input("Enter customer name: ")
     senior_id = input("Enter senior ID (leave blank if not senior): ")
     return customer_name, senior_id
