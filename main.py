@@ -35,9 +35,26 @@ def get_customer_detsils():
 def calculate_total():
     pass
 
-#TODO (Name): (Description)
-def display_receipt():
-    pass
+#TODO (Daphne): (Implement receipt display)
+def display_receipt(order_items, customer, subtotal, discount, grand_total):
+    
+    print("\n=== ORDER DETAILS ===")
+    print("Product\t\tPrice\tQty\tTotal")
+    for item in order_items:
+        total = item['price'] * item['quantity']
+        print(f"{item['product_name']}\t\t{item['price']:.2f}\t{item['quantity']}\t{total:.2f}")
+    
+    print("\n=== CUSTOMER INFORMATION ===")
+    print(f"Customer Name: {customer['name']}")
+    if customer['senior_id'].strip():
+        print(f"Senior ID No.: {customer['senior_id']}")
+        print("(10% Senior Citizen Discount Applied)")
+    
+    print("\n=== PAYMENT SUMMARY ===")
+    print(f"Subtotal: {subtotal:.2f}")
+    if discount > 0:
+        print(f"Discount: -{discount:.2f}")
+    print(f"Grand Total: {grand_total:.2f}")
 
 #TODO (Name): (Description)
 def main():
