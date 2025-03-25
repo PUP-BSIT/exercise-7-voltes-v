@@ -64,9 +64,9 @@ def display_receipt(order_items, customer_name, subtotal, discount, grand_total)
 
 #TODO (JC): Main function to manage the order system
 def main():
-      # Step 1: Collect order details
+    # Step 1: Collect order details
     order_items = get_order_details()
-    
+
     # Step 2: Get customer details
     customer_name, senior_id = get_customer_details()
     
